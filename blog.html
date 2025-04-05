@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Latest Insights</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom right, #f9fafb, #f3f4f6);
+      padding: 3rem 1rem;
+      color: #111827;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      font-weight: bold;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    @media (min-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .card {
+      background: #fff;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .card:hover img {
+      transform: scale(1.1);
+    }
+    .card-content {
+      padding: 1.5rem;
+    }
+    .date {
+      display: flex;
+      align-items: center;
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-bottom: 1rem;
+    }
+    .date svg {
+      width: 16px;
+      height: 16px;
+      margin-right: 0.5rem;
+    }
+    .title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    .description {
+      color: #4b5563;
+      margin-bottom: 1.5rem;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      background-color: #4f46e5;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.3s;
+    }
+    .button:hover {
+      background-color: #4338ca;
+    }
+    .button svg {
+      margin-left: 0.5rem;
+      width: 16px;
+      height: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Latest Insights</h1>
+    <div class="grid" id="blogContainer"></div>
+  </div>
+
+  <script>
+    const blogPosts = [
+      {
+        id: 1,
+        title: "The Future of Web Development: AI and Machine Learning Integration",
+        description: "Explore how artificial intelligence and machine learning are revolutionizing the way we build and interact with web applications. From smart user interfaces to automated testing, discover the latest trends.",
+        date: "March 15, 2024",
+        image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800"
+      },
+      {
+        id: 2,
+        title: "Designing for Accessibility: Best Practices in 2024",
+        description: "Learn essential strategies for creating inclusive web experiences that work for everyone. We'll cover WCAG guidelines, assistive technologies, and practical implementation tips.",
+        date: "March 14, 2024",
+        image: "https://images.unsplash.com/photo-1587440871875-191322ee64b0?auto=format&fit=crop&q=80&w=800"
+      },
+      {
+        id: 3,
+        title: "Optimizing Performance in Modern Web Applications",
+        description: "Discover advanced techniques for improving web application performance, from code splitting to lazy loading, and learn how to deliver lightning-fast experiences to your users.",
+        date: "March 13, 2024",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+      },
+      {
+        id: 4,
+        title: "Building Scalable Architecture with Microservices",
+        description: "Deep dive into microservices architecture and learn how to build robust, scalable systems that can handle millions of users while maintaining code quality and developer productivity.",
+        date: "March 12, 2024",
+        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
+      }
+    ];
+
+    const blogContainer = document.getElementById('blogContainer');
+
+    blogPosts.forEach(post => {
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="card-content">
+          <div class="date">
+           
+            <time>${post.date}</time>
+          </div>
+          <h2 class="title">${post.title}</h2>
+          <p class="description">${post.description}</p>
+          <a href="#" class="button">
+            Apply Now
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      `;
+      blogContainer.appendChild(card);
+    });
+  </script>
+</body>
+</html>
